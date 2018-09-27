@@ -14,6 +14,7 @@ import {
   loadFilesFromReferences,
   play,
   pause,
+  seekToTime,
   seekBackward,
   seekForward,
   next,
@@ -185,6 +186,14 @@ class Winamp {
     this.store.dispatch(pause());
   }
 
+  stop() {
+    this.store.dispatch(stop());
+  }
+
+  seekToTime(seconds) {
+    this.store.dispatch(seekToTime(seconds));
+  }
+
   seekBackward(seconds) {
     this.store.dispatch(seekBackward(seconds));
   }
@@ -210,6 +219,10 @@ class Winamp {
   // Replace any existing tracks with this array of tracks, and begin playing.
   setTracksToPlay(tracks) {
     this.store.dispatch(loadMediaFiles(tracks, LOAD_STYLE.PLAY));
+  }
+
+  getMediaStatus() {
+    return Selectors.getMediaStatus(this.store.getState());
   }
 
   onWillClose(cb) {
