@@ -137,5 +137,8 @@
       "config/jest.*.js"
     ]
   },
-  "prettier": {}
+  "prettier": {},
+  "dependencies": {
+    "@types/rc-slider": "^8.6.0"
+  }
 }
